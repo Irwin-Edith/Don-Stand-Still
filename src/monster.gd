@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-const SPEED = 2.0
+const SPEED = 3.5
 var target = null
 var nav : NavigationRegion3D = null
 var vel = Vector3()
