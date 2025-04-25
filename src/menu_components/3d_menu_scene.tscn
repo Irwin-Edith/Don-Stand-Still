@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://sppk7blyxx7x"]
+
+[ext_resource type="MeshLibrary" uid="uid://cpkr61dgh2pey" path="res://src/Tilesrc.meshlib" id="1_e2jdc"]
+[ext_resource type="Script" uid="uid://dxkse7u24icl1" path="res://src/menu_components/flashlight.gd" id="2_wk3xs"]
+
+[sub_resource type="Environment" id="Environment_wk3xs"]
+background_mode = 1
+ambient_light_color = Color(0.136826, 0.136826, 0.136826, 1)
+
+[node name="3DMenuScene" type="Node3D"]
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("1_e2jdc")
+data = {
+"cells": PackedInt32Array(4, 65533, 1, 4, 65534, 1, 4, 65535, 1, 4, 1, 1, 4, 2, 1, 65531, 65533, 1, 65531, 65534, 1, 65531, 65535, 1, 65531, 0, 1, 65531, 1, 1, 65531, 2, 1, 65532, 2, 1, 65533, 2, 1, 65534, 2, 1, 65535, 2, 1, 0, 2, 1, 1, 2, 1, 2, 2, 1, 3, 2, 1, 65532, 65533, 1, 65533, 65533, 1, 65534, 65533, 1, 65535, 65533, 1, 0, 65533, 1, 1, 65533, 1, 2, 65533, 1, 3, 65533, 1, 65533, 65534, 1, 65533, 65535, 1, 65534, 65535, 1, 65534, 1, 1, 1, 1, 1, 0, 65534, 1, 1, 65534, 1, 1, 65535, 1, 4, 0, 1, 3, 0, 1, 65532, 65534, 0, 65532, 65535, 0, 65532, 0, 0, 65532, 1, 0, 65533, 1, 0, 65533, 0, 0, 65534, 65534, 0, 65535, 65534, 0, 65535, 65535, 0, 65535, 0, 0, 65534, 0, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 65535, 1, 0, 1, 0, 0, 2, 0, 0, 2, 1, 0, 3, 1, 0, 3, 65535, 0, 2, 65535, 0, 2, 65534, 0, 3, 65534, 0)
+}
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.498877, -0.361937, 0.787479, -0.0376659, 0.898711, 0.436922, -0.865854, -0.247631, 0.434713, 0.447796, 4.27113, 1.09842)
+
+[node name="Flashlight2" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.825, 3.9, -3.741)
+script = ExtResource("2_wk3xs")
+
+[node name="Flashlight4" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1.53253, 3.9, -0.81759)
+script = ExtResource("2_wk3xs")
+
+[node name="Flashlight3" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -3.661, 4.2733, 0.649)
+script = ExtResource("2_wk3xs")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_wk3xs")

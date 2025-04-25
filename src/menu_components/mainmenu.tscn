@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=3 uid="uid://dkq4adpy44e63"]
+
+[ext_resource type="PackedScene" uid="uid://br4rws384xcmr" path="res://src/fader.tscn" id="1_1cfxn"]
+[ext_resource type="Script" uid="uid://bjp1vmhnopgeg" path="res://src/menu_components/mainmenu.gd" id="1_gwltm"]
+[ext_resource type="PackedScene" uid="uid://cb7378mitprp6" path="res://src/level.tscn" id="2_2ug0e"]
+[ext_resource type="FontFile" uid="uid://cn5pin71l5rb1" path="res://assets/Fonts/murder.ttf" id="2_t2spu"]
+[ext_resource type="PackedScene" uid="uid://sppk7blyxx7x" path="res://src/menu_components/3d_menu_scene.tscn" id="3_gwltm"]
+[ext_resource type="FontVariation" uid="uid://fj02372r4mul" path="res://assets/Fonts/default_font.tres" id="3_t2spu"]
+[ext_resource type="AudioStream" uid="uid://377gccupwdpb" path="res://assets/audio/main_theme.wav" id="7_rnaf8"]
+
+[node name="Mainmenu" type="Node3D"]
+script = ExtResource("1_gwltm")
+game_scene = ExtResource("2_2ug0e")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Fader" parent="CanvasLayer" instance=ExtResource("1_1cfxn")]
+
+[node name="Control" type="Control" parent="CanvasLayer/Fader"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Fader/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/Fader/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("2_t2spu")
+theme_override_font_sizes/font_size = 240
+text = "Don stand still"
+horizontal_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Fader/Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Fader/Control/VBoxContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="CanvasLayer/Fader/Control/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_t2spu")
+theme_override_font_sizes/font_size = 32
+text = "Start Game"
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/Fader/Control/VBoxContainer/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_t2spu")
+theme_override_font_sizes/font_size = 32
+text = "Quit"
+
+[node name="3DMenuScene" parent="." instance=ExtResource("3_gwltm")]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("7_rnaf8")
+autoplay = true

@@ -1,0 +1,6 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://fj02372r4mul"]
+
+[ext_resource type="FontFile" uid="uid://ds5oo31f6uxk7" path="res://assets/Fonts/conjuring.ttf" id="1_sc7v2"]
+
+[resource]
+base_font = ExtResource("1_sc7v2")

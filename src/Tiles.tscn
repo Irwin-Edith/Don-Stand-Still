@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://bu5lg5nv4smyl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ro4ic"]
+albedo_color = Color(0.215552, 0.0275646, 0.0445792, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_av5cw"]
+material = SubResource("StandardMaterial3D_ro4ic")
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_odwrq"]
+vertices = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, -1)
+polygons = [PackedInt32Array(0, 1, 2), PackedInt32Array(1, 3, 2)]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_odwrq"]
+albedo_color = Color(0.300586, 0.119387, 0.0128362, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ro4ic"]
+material = SubResource("StandardMaterial3D_odwrq")
+size = Vector3(2, 6, 2)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_odwrq"]
+points = PackedVector3Array(1, 2.90852, 1, -1, -2.90852, -1, -1, -2.90852, 1, -1, 2.90852, -1, 1, -2.90852, -1, 1, -2.90852, 1, -1, 2.90852, 1, 1, 2.90852, -1)
+
+[node name="Node" type="Node"]
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.40618, 0, 0)
+mesh = SubResource("PlaneMesh_av5cw")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="Floor"]
+navigation_mesh = SubResource("NavigationMesh_odwrq")
+
+[node name="Wall" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_ro4ic")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Wall"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_odwrq")

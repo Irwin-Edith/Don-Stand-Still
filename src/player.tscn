@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://bfei7toxhfchr"]
+
+[ext_resource type="Script" uid="uid://cped5mp14maqf" path="res://src/player.gd" id="1_lowyb"]
+[ext_resource type="AudioStream" uid="uid://nsqtkkcyjma" path="res://assets/audio/footsteps.mp3" id="2_ehvfd"]
+[ext_resource type="AudioStream" uid="uid://bqmy2gavaee75" path="res://assets/audio/breathing.mp3" id="3_bktlc"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rc2ur"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_lowyb"]
+
+[node name="Player" type="CharacterBody3D"]
+collision_layer = 4
+collision_mask = 9
+script = ExtResource("1_lowyb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0.69776, 0)
+shape = SubResource("CapsuleShape3D_rc2ur")
+
+[node name="CameraPivot" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 0.975989, 0.21782, 0, -0.21782, 0.975989, 0, 1.25732, 0.0269325)
+current = true
+
+[node name="SpotLight3D" type="SpotLight3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.228394, 0.62174, 0)
+light_color = Color(0.937947, 0.8609, 0.645239, 1)
+spot_range = 15.48
+spot_angle = 30.0
+
+[node name="Collider" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Collider"]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0.698, 0)
+shape = SubResource("CylinderShape3D_lowyb")
+
+[node name="Footsteps" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_ehvfd")
+volume_db = -10.0
+
+[node name="Breathing" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_bktlc")
+volume_db = -25.0
+autoplay = true
